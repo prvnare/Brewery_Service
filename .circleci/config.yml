@@ -1,4 +1,5 @@
 version: 2.1
 jobs:
-  docker:
-    - image: circleci/openjdk:11.0.3-jdk-stretch
+  build:
+    docker:
+      -image: circleci/openjdk:11.0.3-jdk-stretch
