@@ -5,3 +5,4 @@ jobs:
       - image: circleci/openjdk:11.0.3-jdk-stretch
     steps:
       - checkout
+      - run: mvn test
