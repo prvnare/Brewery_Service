@@ -37,11 +37,13 @@ public class BeerController {
 
     // ## Request Handlers ##
 
-    @GetMapping("/{beerId}")
+    @GetMapping(value = "/{beerId}")
     public ResponseEntity<BeerDto> getBeerDetails(@NotNull @PathVariable("beerId") UUID beerId) {
         log.debug("Generated UUID : {}", beerId);
         BeerDto beerById = service.getBeerById(beerId);
-        return new ResponseEntity<>(beerById, HttpStatus.OK);
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type", "application/json; charset=utf-8");
+        return new ResponseEntity<>(beerById, headers, HttpStatus.OK);
     }
 
     //@Valid will do the been validation
@@ -52,7 +54,7 @@ public class BeerController {
         log.debug("Saved Beer Details : {} ", savedBeer);
         HttpHeaders headers = new HttpHeaders();
         //TODO :  Add host name here.
-        headers.add("location", ResourceURIs.BEER_RESOURCE + "/" + savedBeer.getId());
+        headers.add("Location", ResourceURIs.BEER_RESOURCE + "/" + savedBeer.getId());
         return new ResponseEntity<>(headers, HttpStatus.CREATED);
     }
 
