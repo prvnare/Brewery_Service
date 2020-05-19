@@ -1,9 +1,11 @@
 package com.prvn.spring.ms.brew.brewery.model;
 
+import com.prvn.spring.ms.brew.brewery.mappers.DateMapper;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.mapstruct.Mapper;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Null;
@@ -22,6 +24,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Mapper(uses = DateMapper.class)
 public class BeerDto {
     @Null
     private UUID id;

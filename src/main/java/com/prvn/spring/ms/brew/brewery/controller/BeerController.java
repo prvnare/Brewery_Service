@@ -41,9 +41,7 @@ public class BeerController {
     public ResponseEntity<BeerDto> getBeerDetails(@NotNull @PathVariable("beerId") UUID beerId) {
         log.debug("Generated UUID : {}", beerId);
         BeerDto beerById = service.getBeerById(beerId);
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-Type", "application/json; charset=utf-8");
-        return new ResponseEntity<>(beerById, headers, HttpStatus.OK);
+        return new ResponseEntity<>(beerById, HttpStatus.OK);
     }
 
     //@Valid will do the been validation
